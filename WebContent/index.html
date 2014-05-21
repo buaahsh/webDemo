@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>运行支持平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <script src="js/jQuery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jQuery.cookie.js"></script>
+    <script src="js/bootbox.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+    .container{
+    	background-color:#ffffff;
+    }
+    .banner{
+    	border-top:solid 5px #0e618a;
+    }
+    .footer,.footer a{
+	    color:white;
+    }
+    .footer p{
+	    float:left;
+	    margin-left:420px;
+	    margin-top:45px;
+    }
+    </style>
+  </head>
+  <body>
+	<div class="container">
+	<div class="banner"><img src="img/top_01.jpg"></div>
+	<div class="navbar"  role="navigation" id="navbar">
+	<ul class="nav" >
+		<li class="active"><a href="index.html">首页</a></li>
+		<li><a href="hjyx.html">环境运行</a></li>
+		<li><a href="glwh.html">管理维护</a></li>
+		<li><a href="jszc.html">技术支持</a></li>
+		<li><a href="wzgl.html">网站管理</a></li>
+	</ul>
+	</div>
+	<div class="row" style="clear:both; padding-top:10px;">
+		<div class="span3 bs-docs-sidebar" style="float:left;" id="indexUser">
+			<div class="form-signin" role="form">
+		        <h3 class="form-signin-heading">平台登录</h3><br />
+		        <input type="text" class="form-control" placeholder="用户名" required="" autofocus="" id="user"><br />
+		        <input type="password" class="form-control" placeholder="密码" required="" id="password"><br />
+		        <!--<label class="checkbox"><input type="checkbox" value="remember-me"> 记住我</label>  -->
+		        <hr />
+		        <button class="btn btn-lg btn-primary btn-block" id="userLogin">登录 </button>
+		    </div>
+		</div>
+		<div class="span9"  style="float:right;">
+		<!-- <iframe width='100%' height='500px' frameBorder='0' src='https://a.tiles.mapbox.com/v3/huangshaohan.gk5i2dpf/mm/zoompan,zoomwheel.html?secure=1#4/38.72/105.47'></iframe>-->
+		</div>
+	</div>
+	<hr />
+	<div class="footer" style="background-image: url(img/foot.jpg); height: 90px;">
+  		<p>版权所有 © <a href="http://www.jsi.buaa.edu.cn/">Sino-German Joint software Institude</a>, <a href="http://www.buaa.edu.cn">Beihang Univ.</a></p>
+    </div>
+	</div>
+  <script src="js/UserLogin.js"></script>
+  </body>
+
+</html>

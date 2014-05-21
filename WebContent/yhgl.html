@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>运行支持平台-管理维护</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <script src="js/jQuery.js"></script>
+    <script src="js/jQuery.cookie.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script src="js/UserLogin.js"></script>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+    .container{
+    	background-color:#ffffff;
+    }
+    .banner{
+    	border-top:solid 5px #0e618a;
+    }
+    .footer,.footer a{
+	    color:white;
+    }
+    .footer p{
+	    float:left;
+	    margin-left:420px;
+	    margin-top:45px;
+    }
+    .statistic{
+    	font-weight:bold;
+    }
+    .statistic .line{
+    	clear:both;
+    }
+    .statistic .line .item{
+    	float:left;
+    	width:200px;
+    }
+    .query_form{
+    	clear:both;
+    	padding-top:15px;
+    }
+    </style>
+  </head>
+  <body>
+	<div class="container">
+	<div class="banner"><img src="img/top_01.jpg"></div>
+	<div class="navbar"  role="navigation" id="navbar">
+	<ul class="nav">
+		<li><a href="index.html">首页</a></li>
+		<li><a href="hjyx.html">环境运行</a></li>
+		<li  class="active"><a href="yhgl.html">管理维护</a></li>
+		<li><a href="jszc.html">技术支持</a></li>
+		<li><a href="wzgl.html">网站管理</a></li>
+	</ul>
+	</div>
+	<div class="row" style="clear:both; padding-top:10px;">
+		<div class="span3 bs-docs-sidebar" style="float:left;">
+		<div class="nav nav-list">
+			<div class="list-group" id="list-group"  style="background:#f5f5f5; border-radius:5px; box-shadow:0 0 10px #ccc;
+ padding:10px; " >
+				<a class="list-group-item" href="yhgl.html" id="cateuser">用户管理</a> <br><br>
+				<a class="list-group-item" href="#" id="catejob">作业管理</a>  <br><br>
+				<a class="list-group-item" href="?category=cluster" id="catecluster">集群管理</a> <br><br>
+				<a class="list-group-item" href="?category=soft" id="catesoft">软件管理</a> <br><br>
+				<a class="list-group-item" href="?category=notice" id="notice">通知通告</a>
+			</div>
+		</div>
+		</div>
+		<div class="span9"  style="float:right;">
+			<h3 align="center">用户管理首页</h3>
+			<div class="statistic">
+				<div class="line">
+					<div class="item">待确认:<a class="btn btn-link" id="status_0"> 个</a></div>
+					<div class="item">待审批:<a class="btn btn-link" id="status_1"> 个</a></div>
+					<div class="item">待建立:<a class="btn btn-link" id="status_2"> 个</a></div>
+				</div>
+				<div class="line">
+					<div class="item">待映射:<a class="btn btn-link" id="status_3"> 个</a></div>
+					<div class="item">待创建VPN:<a class="btn btn-link"  id="status_4"> 个</a></div>
+					<div class="item">待设置试用用户:<a class="btn btn-link" id="status_5"> 个</a></div>
+				</div>
+				<div class="line">
+					<div class="item">待设置正式用户:<a class="btn btn-link" id="status_6"> 个</a></div>
+					<div class="item">映射失败:<a class="btn btn-link" id="faliureMap">  个</a></div>
+				</div>
+			</div>
+			<div class="query_form form-inline">
+				用户名:
+			  <input type="text" class="input-small" id="userInput">
+			  	邮箱:
+			  <input type="text" class="input-small" id="emailInput">
+			  	申请人:
+			  <input type="text" class="input-small" id="applicantInput">
+			  状态:
+			  	<select id="statusSelect" class="input-small">
+				  	<option value="0">任意</option>
+				  	<option value="11">无效</option>
+					<option value="1">待确认</option>
+					<option value="2">待审批</option>
+					<option value="3">退修</option>
+					<option value="4">修回</option>
+					<option value="5">待建立</option>
+					<option value="6">待映射</option>
+					<option value="7">创建VPN</option>
+					<option value="8">待设试用</option>
+					<option value="9">待转正</option>
+					<option value="10">正式</option>
+					<!--<option value="7">映射失败</option>!-->
+				</select>
+			  <button class="btn">查询</button>
+			</div>
+			<br/>
+			<table class="table table-striped table-bordered table-hover table-condesed" id="userInfoTable">
+				<tr class="success"><td>序号</td><td>用户名</td><td >邮箱</td><td>申请人</td><td>状态</td></tr>
+			</table>
+			<div class="pagination">
+			  <ul>
+			    <li><a href="#">1</a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			  </ul>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<div class="footer" style="background-image: url(img/foot.jpg); height: 95px;">
+  		<p>版权所有 © <a href="http://www.jsi.buaa.edu.cn/">Sino-German Joint software Institude</a>, <a href="http://www.buaa.edu.cn">Beihang Univ.</a></p>
+    </div>
+	</div>
+	<script type="text/javascript">
+	//填写多个状态的个数
+		$.ajaxSettings.async = false;
+		$.getJSON("/webDemo/Accounts?status=0", null, function(userData){
+      		$("#userInfoTable").empty().append("<tr class=\"success\"><td>序号</td><td>用户名</td><td >邮箱</td><td>申请人</td><td>状态</td></tr>");
+      		$.each(userData.users, function(idx, item){
+    			$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+    		});
+    	});
+		$.getJSON("/webDemo/Accounts?status=-1", null, function(data){
+			for(var i=0;i<7;i++){
+				var status = "status_"+i;
+				$("#"+status).empty().append(data[status]+"个");
+          		}
+		});
+		$.getJSON("/webDemo/FailureMapServlet?arg=num", null, function(data){
+            $("#faliureMap").empty().append(data+"个");
+        })
+           	
+    </script>
+    <script type="text/javascript">
+         function submit(){
+             $.getJSON("/webDemo/FailureMapServlet?arg=sub", null, function(data){
+             });
+          }
+		$("div.item .btn").click(function(){
+			//直接传过去的状态的参数为数字
+            if ($(this).attr("id") ==  "faliureMap")
+            {
+                $.getJSON("/webDemo/FailureMapServlet?arg=list", null, function(data){
+                    $("#userInfoTable").empty().append("<tr class='success'><td>用户名</td><td >集群</td><td>映射账号</td></tr>");
+                    $.each(data, function(idx, item){
+                        $("#userInfoTable").append("<tr><td>"+item.split(' ')[0]+"</td><td>"+item.split(' ')[1]+"</td><td>"+item.split(' ')[2]+"</td></tr>");
+                    })
+                });
+                $("#userInfoTable").append("<input type='button' onclick='submit()'' value='重试'/>");
+                return;
+            }
+		    var status =  new Number($(this).attr("id").split("_")[1]);
+		    status += 1;
+		    //得到相对的status
+		    if(status>2)
+		    	status += 2;
+		    if(status==2){
+		    	$("#userInfoTable").empty().append("<tr class=\"success\"><td>序号</td><td>用户名</td><td >邮箱</td><td>申请人</td><td>状态</td></tr>");
+		    	$.getJSON("/webDemo/Accounts?status=2", null, function(data){
+	           		$.each(data.users, function(idx, item){
+			    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+			    	});	
+	           		$.getJSON("/webDemo/Accounts?status=3", null, function(data){
+		           		$.each(data.users, function(idx, item){
+				    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+				    	});	
+		           		$.getJSON("/webDemo/Accounts?status=4", null, function(data){
+			           		$.each(data.users, function(idx, item){
+					    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+					    	});		    		
+					    });
+				    });
+			    });
+			    
+			    
+		    }
+		    else{
+		    	$("#userInfoTable").empty().append("<tr class=\"success\"><td>序号</td><td>用户名</td><td >邮箱</td><td>申请人</td><td>状态</td></tr>");
+		    	$.getJSON("/webDemo/Accounts?status="+status, null, function(data){
+	           		$.each(data.users, function(idx, item){
+			    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+			    	});		    		
+			    });
+		    }
+		});
+    </script>
+    <script type="text/javascript">
+    //查询用户信息
+    	$("button.btn").click(function(){
+		    $.getJSON("/webDemo/Accounts?status="+$("#statusSelect").val()+"&user="+$("#userInput").val()+"&email="+$("#emailInput").val()+"&applicant="+$("#applicantInput").val(), null, function(data){
+		    	if(data.users.length==0)
+		    	{
+		    			$("#userInfoTable").empty();
+		    			alert("抱歉，没有找到");
+		    			return;
+		    	}
+		    	$.each(data.users, function(idx, value){
+	           		$("#userInfoTable").empty().append("<tr class=\"success\"><td>序号</td><td>用户名</td><td >邮箱</td><td>申请人</td><td>状态</td></tr>");
+	           		$.each(data.users, function(idx, item){
+			    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+			    	});		    		
+		    	});
+		    });
+    	});
+    </script>
+    <script src="js/UserLogin.js"></script>
+  </body>
+</html>

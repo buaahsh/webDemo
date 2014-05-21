@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>运行支持平台-环境运行</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <script src="js/jQuery.js"></script>
+    <script src="js/jQuery.cookie.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/moment.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap-datepicker.js" charset="UTF-8"></script>
+    
+    <!--<script src="js/UserLogin.js"></script>-->
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/datepicker.css" rel="stylesheet" media="screen">
+    
+    <style type="text/css">
+    .container{
+    	background-color:#ffffff;
+    }
+    .banner{
+    	border-top:solid 5px #0e618a;
+    }
+    .footer,.footer a{
+	    color:white;
+    }
+    .footer p{
+	    float:left;
+	    margin-left:420px;
+	    margin-top:45px;
+    }
+    </style>
+  </head>
+  <body>
+	<div class="container">
+	<div class="banner"><img src="img/top_01.jpg"></div>
+	<div class="navbar"  role="navigation" id="navbar">
+	<ul class="nav">
+		<li><a href="index.html">首页</a></li>
+		<li class="active"><a href="hjyx.html">环境运行</a></li>
+		<li><a href="glwh.html">管理维护</a></li>
+		<li><a href="jszc.html">技术支持</a></li>
+		<li><a href="wzgl.html">网站管理</a></li>
+	</ul>
+	</div>
+	<div class="row" style="clear:both; padding-top:10px;">
+		<div class="span3 bs-docs-sidebar" style="float:left;">
+		<div class="nav nav-list">
+			<div class="list-group" id="list-group"  style="background:#ECF7FB; border-radius:5px; box-shadow:0 0 10px #ccc;
+ padding:10px; " >
+				<a class="list-group-item btn-link" id="clustertime">集群实时</a> <br><br>
+				<a class="list-group-item btn-link" id="clusterstatistics">集群统计</a>  <br><br>
+				<a class="list-group-item" href="#" id="onlinejob">在线作业</a> <br><br>
+				<a class="list-group-item" href="?state=historyjob" id="historyjob">历史作业</a> <br><br>
+				<a class="list-group-item" href="?state=environmentuser" id="environmentuser">环境用户</a> <br><br>
+				<a class="list-group-item" href="?state=environmentapp" id="environmentapp">环境应用</a> <br><br>
+				<a class="list-group-item btn-link" id="devops">运维服务</a>
+			</div>
+		</div>
+		</div>
+		<div class="span9" id="result"  style="float:right;font-size:">
+            <div id="choose">
+
+            </div>
+            <div id="figure1">
+
+            </div>
+            <div id="figure2">
+
+            </div>
+            <!--
+            <input type='text' style='width: 100px' name='start' id='end' class='form-control active' value='03/18/2013'>
+            <iframe width=530 height=300 frameborder=0 scrolling="auto" src="http://www.scgrid.cn/nagiosgraph/cgi-bin/showgraph.cgi?host=cigit&service=cluster utilization&geom=430x215&rrdopts=+-snow-777600+-enow-0"></iframe>
+            <iframe width=530 height=300 frameborder=0 scrolling="auto" src="http://www.scgrid.cn/nagiosgraph/cgi-bin/showgraph.cgi?host=cigit&service=cluster utilization&geom=430x215&rrdopts=+-snow-777600+-enow-0"></iframe>
+            <iframe width=630 height=450 frameborder=0 scrolling="auto" src="http://www.scgrid.cn/nagiosgraph/cgi-bin/showgraph.cgi?host=cigit&service=fs workspace&geom=530x215&rrdopts=+-snow-777600+-enow-0"></iframe>
+            <iframe width=630 height=450 frameborder=0 scrolling="auto" src="http://www.scgrid.cn/nagiosgraph/cgi-bin/showgraph.cgi?host=cigit&service=fs workspace&geom=530x215&rrdopts=+-snow-777600+-enow-0"></iframe>
+			-->
+		</div>
+	</div>
+	<hr />
+	<div class="footer" style="background-image: url(img/foot.jpg); height: 90px;">
+  		<p>版权所有 © <a href="http://www.jsi.buaa.edu.cn/">Sino-German Joint software Institude</a>, <a href="http://www.buaa.edu.cn">Beihang Univ.</a></p>
+    </div>
+	</div>
+
+    <script type="text/javascript" src="js/hjyx/hjyx.js" charset="UTF-8"></script>
+  </body>
+</html>

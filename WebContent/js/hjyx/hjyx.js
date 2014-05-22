@@ -37,7 +37,7 @@ $("body").on("click","#clustertime",function(){
             +"<label class='checkbox inline'><input type='checkbox' id='' value='ihb'> wuhan</label>"
             +"<label class='checkbox inline'><input type='checkbox' id='' value='jinan'> jinan</label>"
             +"</div>"
-        +"</div>"
+        +"</div><br>"
     );
     $('#begin').datepicker();
     $('#end').datepicker();         
@@ -74,7 +74,7 @@ $("body").on("click","#devops",function(){
             +"<label class='checkbox inline'><input type='checkbox' id='' value='client51'> client51</label>"
             +"<label class='checkbox inline'><input type='checkbox' id='' value='portal81'> portal81</label>"
             +"</div>"
-        +"</div>"
+        +"</div><br>"
     );   
     $('#begin').datepicker();
     $('#end').datepicker();      
@@ -108,7 +108,7 @@ $("body").on("click","#clusterstatistics",function(){
             +"<label class='checkbox inline'><input type='checkbox' id='' value='ihb'> wuhan</label>"
             +"<label class='checkbox inline'><input type='checkbox' id='' value='jinan'> jinan</label>"
             +"</div>"
-        +"</div>"
+        +"</div><br>"
     );         
     $('#begin').datepicker();
     $('#end').datepicker();
@@ -121,6 +121,12 @@ $("body").on("click", "[type='checkbox']",function(){
 $("body").on("focusout", "input.span2",function(){
     display();
 });
+
+function getHost(src)
+{
+    host = src.split("host=")[1].split("&")[0];
+    return host;
+}
 
 function showFig(kind, serviceKind1, serviceKind2, hostArray, snow, enow)
 {
@@ -148,10 +154,12 @@ function showFig(kind, serviceKind1, serviceKind2, hostArray, snow, enow)
     if (kind == 1  || kind == 2)
     {
            for (var i = figure1.length - 1; i >= 0; i--) {
-                $("#figure1").append("<iframe width=630 height='400' frameborder=0 scrolling='auto' src='"+figure1[i]+"'></iframe>");
+                $("#figure1").append("<div>"+getHost(figure1[i])+"</div>");
+                $("#figure1").append("<div><iframe width=630 height='300' frameborder=0 scrolling='auto' src='"+figure1[i]+"'></iframe></div>");
            };
            for (var i = figure2.length - 1; i >= 0; i--) {
-                $("#figure2").append("<iframe width=630 height='400' frameborder=0 scrolling='auto' src='"+figure2[i]+"'></iframe>");
+                $("#figure2").append("<div>"+getHost(figure2[i])+"</div>");
+                $("#figure2").append("<div><iframe width=630 height='300' frameborder=0 scrolling='auto' src='"+figure2[i]+"'></iframe></div>");
            };
     }
     else if (kind == 0)
@@ -162,7 +170,8 @@ function showFig(kind, serviceKind1, serviceKind2, hostArray, snow, enow)
             figure2[j++] = cgiUrl + "host=" + hostArray[i]+"&start="+snow+"&end="+enow+"&geom=600x400";
         };
         for (var i = figure2.length - 1; i >= 0; i--) {
-            $("#figure2").append("<iframe width=630 height='430' frameborder=0 scrolling='auto' src='"+figure2[i]+"'></iframe>");
+            $("#figure2").append("<div>"+getHost(figure2[i])+"</div>");
+            $("#figure2").append("<div><iframe width=630 height='300' frameborder=0 scrolling='auto' src='"+figure2[i]+"'></iframe></div>");
        };
     }
     // for (var i = $("iframe").length - 1; i >= 0; i--) {

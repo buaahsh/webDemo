@@ -207,7 +207,7 @@
     		if(value=="编辑")
     		{
     			var content = "<div class='form-horizontal'>";
-    			$.each($("[colspan='3']:not(.title):not(#email):not(#applyDoc):not(#projectInfo):not(#soft):not(#VPN):not(#other)")
+    			$.each($("[colspan='3']:not(.title):not(#applyDoc):not(#projectInfo):not(#soft):not(#VPN):not(#other)")
     					,function(idx, item){
     				if(item.attributes["id"].nodeValue=="name"){
     					content +=
@@ -470,6 +470,7 @@
 	
 	</script>
     <script type="text/javascript">
+    //用户信息编辑
     	$("body").on("click","button#editInfoBtn",function(){
     		var json={};
     		$.each($("input"),function(idx, item){

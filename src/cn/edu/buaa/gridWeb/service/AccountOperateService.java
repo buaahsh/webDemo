@@ -1,5 +1,8 @@
 package cn.edu.buaa.gridWeb.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,38 +55,7 @@ public class AccountOperateService {
 		catch (JSONException e) {
 			e.printStackTrace();
 		}
-		/*
-		for(UserInfo userInfo:TestDataService.userInfoList){
-			if(userInfo.name.equals(userName)){
-				try {
-					accountInfo.put("name", userInfo.name);
-					accountInfo.put("status", statusTableStrings[userInfo.status]);
-					accountInfo.put("email", userInfo.userApplyInfo.email==null?"":userInfo.userApplyInfo.email);
-					accountInfo.put("applicant", userInfo.userApplyInfo.applicant==null?"":userInfo.userApplyInfo.applicant);	
-					accountInfo.put("adress", userInfo.userApplyInfo.adress==null?"":userInfo.userApplyInfo.adress);
-					accountInfo.put("tel", userInfo.userApplyInfo.tel==null?"":userInfo.userApplyInfo.tel);
-					accountInfo.put("applyDoc", userInfo.userApplyInfo.applyDoc==null?"":userInfo.userApplyInfo.applyDoc);
-					accountInfo.put("applyCompany", userInfo.userApplyInfo.applyCompany==null?"":userInfo.userApplyInfo.applyCompany);
-					accountInfo.put("projectInfo", userInfo.userApplyInfo.projectInfo==null?"":userInfo.userApplyInfo.projectInfo);
-					accountInfo.put("memory", userInfo.userApplyInfo.memory==null?"":userInfo.userApplyInfo.memory);
-					accountInfo.put("soft", userInfo.userApplyInfo.soft==null?"":userInfo.userApplyInfo.soft);
-					accountInfo.put("hard", userInfo.userApplyInfo.hard==null?"":userInfo.userApplyInfo.hard);
-					accountInfo.put("VPN", userInfo.userApplyInfo.VPN==null?"":userInfo.userApplyInfo.VPN);
-					accountInfo.put("machineHours", userInfo.userApplyInfo.machineHours==null?"":userInfo.userApplyInfo.machineHours);
-					accountInfo.put("other", userInfo.userApplyInfo.other==null?"":userInfo.userApplyInfo.other);
-					accountInfo.put("uid", userInfo.userApplyInfo.uid==null?"":userInfo.userApplyInfo.uid);
 
-					accountInfo.put("remarks", userInfo.remarks==null?"":userInfo.remarks);
-				
-					accountInfo.put("applyProcess", getOneAccountApplyProcess(userName));
-				} 
-				catch (JSONException e) {
-					e.printStackTrace();
-				}
-			}
-			
-		}
-		*/
 		return accountInfo;
 	}
 	
@@ -113,31 +85,16 @@ public class AccountOperateService {
 			}
 		}
 		return applyProcess;
-		/*
-		JSONArray applyProcess = new JSONArray(); 
-		for(UserInfo userInfo:TestDataService.userInfoList){
-			if(userInfo.name.equals(userName)){
-				int i = 0;
-				for(String[] item:userInfo.applyProcess){
-					try {
-						applyProcess.put(i++, item[0]+"\t"+item[1]+"\t"+item[2]);
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-				}
-				return applyProcess;
-			}
-		}
-		return applyProcess;
-		*/
 	}
 	
 	private String transferApplyProcessInfo(JSONObject jsonObject) {
 		String processInfo = "";
 		try {
-			processInfo = jsonObject.getString("create_time") 
-					+ jsonObject.getString("action") 
-					+ jsonObject.getString("operator");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			String date = sdf.format(new Date(Long.valueOf(jsonObject.getString("create_time"))));
+			processInfo = "操作时间:" + date
+					+ "  操作类型:" + jsonObject.getString("action") 
+					+ "  操作人：" + jsonObject.getString("operator");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -162,27 +119,6 @@ public class AccountOperateService {
 		}
 		int[] restStatus = transferRESTStatus(arg);
 		boolean result = instance.editUserStatus(loginuser, userName, restStatus[0], restStatus[2], restStatus[1]);
-		
-		/*
-		if(argString.equals("")){
-			return;
-		}
-		int arg = Integer.parseInt(argString);
-		for(UserInfo userInfo:TestDataService.userInfoList){
-			if(userInfo.name.equals(userName)){
-				if(arg==0)
-				{
-					if(userInfo.status>=2&&userInfo.status<=4)
-						userInfo.status = 5;
-					else
-						userInfo.status += 1;
-				}
-					
-				else 
-					userInfo.status = arg;
-			}
-		}
-		*/
 		
 	}
 	
@@ -235,42 +171,24 @@ public class AccountOperateService {
 		instance.addRemark(loginuser, userName, remark);
 	}
 	
+	/**
+	 * editJson
+	 * {
+	 * 	name:username
+	 * 	adress:adress
+	 *  tel:tel
+	 *  applicant:applicant
+	 *  applyCampany:applyCampany
+	 *  memory:memory
+	 *  hard:hard
+	 *  machineHours:machineHours
+	 * }
+	 */
 	public void editAccountApplyInfo(String loginuser, String editString){
-		/**
-		 * editJson
-		 * {
-		 * 	name:username
-		 * 	adress:adress
-		 *  tel:tel
-		 *  applicant:applicant
-		 *  applyCampany:applyCampany
-		 *  memory:memory
-		 *  hard:hard
-		 *  machineHours:machineHours
-		 * }
-		 */
 		JSONObject editJson;
 		try {
 			editJson = new JSONObject(editString);	
 			
-			/*
-			for(UserInfo userInfo:TestDataService.userInfoList){
-				if(userInfo.name.equals(editJson.getString("name"))){
-					userInfo.userApplyInfo.adress = editJson.getString("adress");
-					userInfo.userApplyInfo.tel = editJson.getString("tel");
-					userInfo.userApplyInfo.applicant = editJson.getString("applicant");
-					userInfo.userApplyInfo.applyDoc = editJson.getString("applyDoc");
-					userInfo.userApplyInfo.applyCompany = editJson.getString("applyCompany");
-					userInfo.userApplyInfo.projectInfo = editJson.getString("projectInfo");
-					userInfo.userApplyInfo.memory = editJson.getString("memory");
-					userInfo.userApplyInfo.soft = editJson.getString("soft");
-					userInfo.userApplyInfo.hard = editJson.getString("hard");
-					userInfo.userApplyInfo.VPN = editJson.getString("VPN");
-					userInfo.userApplyInfo.machineHours = editJson.getString("machineHours");
-					userInfo.userApplyInfo.other = editJson.getString("other");
-				}
-			}
-			*/
 			String userName = editJson.getString("name");
 			UserSaveFullData udata=new UserSaveFullData();
 			AccountSaveData account=new AccountSaveData();
@@ -282,7 +200,7 @@ public class AccountOperateService {
 			account.setTel(editJson.getString("tel"));
 			account.setWalltime(editJson.getString("machineHours"));
 			
-			account.setEmail("buaahsh@foxmail.com");;
+			account.setEmail(editJson.getString("email"));
 			account.setInterest("");
 			account.setSecurity("VPN");
 			
@@ -298,6 +216,7 @@ public class AccountOperateService {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
 		AccountOperateService ao = new AccountOperateService();
 //		System.out.println(ao.getOneAccountInfo("user1"));
 //		ao.editAccountStatus("user1", "0");

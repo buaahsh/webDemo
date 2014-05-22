@@ -29,7 +29,7 @@ public class EditAccountInfoServlet extends BaseServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String loginuser = this.getUserName(request);
 		AccountOperateService ao = new AccountOperateService();
-		System.out.println("~~~~~"+request.getParameter("data"));
+		//System.out.println("~~~~~"+request.getParameter("data"));
 		ao.editAccountApplyInfo(loginuser, request.getParameter("data"));
 		response.getWriter().write("1");
 	}

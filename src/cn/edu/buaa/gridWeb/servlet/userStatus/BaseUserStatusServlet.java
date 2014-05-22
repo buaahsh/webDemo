@@ -18,7 +18,7 @@ public class BaseUserStatusServlet extends BaseServlet {
 		String userString = getUserName(request);
 		boolean b2=pm.checkPrivacy(userString, "GET", getClass());
 		String arg = request.getParameter("arg");
-		if (true){
+		if (b2){
 			if(arg!=null){
 				String user = request.getParameter("user");
 				AccountOperateService ao = new AccountOperateService();

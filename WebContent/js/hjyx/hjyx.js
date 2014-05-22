@@ -124,7 +124,7 @@ $("body").on("focusout", "input.span2",function(){
 
 function getHost(src)
 {
-    host = src.split("host=")[1].split("&")[0];
+    host = src.split("&")[0].split("=")[1];
     return host;
 }
 

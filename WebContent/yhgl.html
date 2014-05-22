@@ -137,7 +137,8 @@
 		$.getJSON("/webDemo/Accounts?status=0", null, function(userData){
       		$("#userInfoTable").empty().append("<tr class=\"success\"><td>序号</td><td>用户名</td><td >邮箱</td><td>申请人</td><td>状态</td></tr>");
       		$.each(userData.users, function(idx, item){
-    			$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+      			index = idx + 1;
+    			$("#userInfoTable").append("<tr><td>"+index+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
     		});
     	});
 		$.getJSON("/webDemo/Accounts?status=-1", null, function(data){
@@ -177,28 +178,32 @@
 		    if(status==2){
 		    	$("#userInfoTable").empty().append("<tr class=\"success\"><td>序号</td><td>用户名</td><td >邮箱</td><td>申请人</td><td>状态</td></tr>");
 		    	$.getJSON("/webDemo/Accounts?status=2", null, function(data){
+		    		index = 0
 	           		$.each(data.users, function(idx, item){
-			    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+	           			index += 1;
+			    		$("#userInfoTable").append("<tr><td>"+index+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
 			    	});	
 	           		$.getJSON("/webDemo/Accounts?status=3", null, function(data){
 		           		$.each(data.users, function(idx, item){
-				    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+                            index += 1;
+				    		$("#userInfoTable").append("<tr><td>"+index+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
 				    	});	
 		           		$.getJSON("/webDemo/Accounts?status=4", null, function(data){
 			           		$.each(data.users, function(idx, item){
-					    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+                                index += 1;
+					    		$("#userInfoTable").append("<tr><td>"+index+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
 					    	});		    		
 					    });
 				    });
 			    });
-			    
-			    
 		    }
 		    else{
 		    	$("#userInfoTable").empty().append("<tr class=\"success\"><td>序号</td><td>用户名</td><td >邮箱</td><td>申请人</td><td>状态</td></tr>");
 		    	$.getJSON("/webDemo/Accounts?status="+status, null, function(data){
+		    		index = 0;
 	           		$.each(data.users, function(idx, item){
-			    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+                        index += 1;
+			    		$("#userInfoTable").append("<tr><td>"+index+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
 			    	});		    		
 			    });
 		    }
@@ -216,8 +221,10 @@
 		    	}
 		    	$.each(data.users, function(idx, value){
 	           		$("#userInfoTable").empty().append("<tr class=\"success\"><td>序号</td><td>用户名</td><td >邮箱</td><td>申请人</td><td>状态</td></tr>");
+	           		index = 0;
 	           		$.each(data.users, function(idx, item){
-			    		$("#userInfoTable").append("<tr><td>"+idx+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
+	           			index += 1;
+			    		$("#userInfoTable").append("<tr><td>"+index+"</td><td class=\"usertd\"><a class=\"btn btn-link btn-mini\" href=\"lcgl.html?user="+item.name+"\">"+item.name+"</a></td><td>"+item.email+"</td><td>"+item.applicant+"</td><td>"+item.status+"</td></tr>");
 			    	});		    		
 		    	});
 		    });
